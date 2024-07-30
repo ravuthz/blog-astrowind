@@ -23,7 +23,7 @@ export const GET = async () => {
       link: getPermalink(post.permalink, 'post'),
       title: post.title,
       description: post.excerpt,
-      pubDate: post.publishDate,
+      publishDate: post.publishDate,
     })),
 
     trailingSlash: SITE.trailingSlash,
