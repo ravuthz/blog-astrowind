@@ -13,7 +13,11 @@ export const getStaticPaths = (async ({ paginate }) => {
   return await getStaticPathsBlogTag({ paginate });
 }) satisfies GetStaticPaths;
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths> & {
+  tag: {
+    title: string;
+  };
+};
 
 const { page, tag } = Astro.props as Props;
 

@@ -3,6 +3,7 @@ import slugify from 'limax';
 import { SITE, APP_BLOG } from 'astrowind:config';
 
 import { trim } from '~/utils/utils';
+import type { MenuItems, MenuItem, Href } from '~/types';
 
 export const trimSlash = (s: string) => trim(trim(s, '/'));
 const createPath = (...params: string[]) => {
@@ -103,29 +104,42 @@ export const getAsset = (path: string): string =>
 /** */
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
 
+
+
 /** */
-export const applyGetPermalinks = (menu: object = {}) => {
+export const applyGetPermalinks = (menu: MenuItems): MenuItems => {
   if (Array.isArray(menu)) {
-    return menu.map((item) => applyGetPermalinks(item));
+    return menu.map((item) => applyGetPermalinks(item)) as MenuItems;
   } else if (typeof menu === 'object' && menu !== null) {
-    const obj = {};
+    const obj: MenuItem = { href: '' };
     for (const key in menu) {
       if (key === 'href') {
+        
         if (typeof menu[key] === 'string') {
-          obj[key] = getPermalink(menu[key]);
+          obj[key] = getPermalink(menu[key] as string);
         } else if (typeof menu[key] === 'object') {
-          if (menu[key].type === 'home') {
-            obj[key] = getHomePermalink();
-          } else if (menu[key].type === 'blog') {
-            obj[key] = getBlogPermalink();
-          } else if (menu[key].type === 'asset') {
-            obj[key] = getAsset(menu[key].url);
-          } else if (menu[key].url) {
-            obj[key] = getPermalink(menu[key].url, menu[key].type);
+          const href = menu[key] as Href;
+
+          switch (href.type) {
+            case 'home':
+              obj[key] = getHomePermalink();
+              break;
+
+            case 'blog':
+              obj[key] = getBlogPermalink();
+              break;
+
+            case 'asset':
+              obj[key] = getAsset(href.url);
+              break;
+
+            default:
+              obj[key] = getPermalink(href.url, href.type);
+              break;
           }
         }
       } else {
-        obj[key] = applyGetPermalinks(menu[key]);
+        obj[key] = applyGetPermalinks(menu[key] as MenuItems);
       }
     }
     return obj;

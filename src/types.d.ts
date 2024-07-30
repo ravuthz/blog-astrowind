@@ -286,3 +286,26 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+export interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+export interface Links {
+  title?: string;
+  links: Array<Link>;
+}
+
+export type Href = { url: string; type: 'home' | 'blog' | 'asset' };
+
+export type MenuItem = {
+  [key: string]: unknown;
+  href: string | Href;
+};
+
+export type MenuItems = MenuItem | Array<MenuItem>;
+
+export type LabelValue = { label: string; value: string };

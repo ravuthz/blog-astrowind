@@ -5,9 +5,11 @@ import { I18N } from 'astrowind:config';
 import Button from '~/components/ui/Button.astro';
 
 const { textDirection } = I18N;
+
+const { addClass } = Astro.props;
 ---
 
-<div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20">
+<div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20" class:list={[addClass]}>
   <Button variant="tertiary" class="px-3 md:px-3" href={getBlogPermalink()}>
     {
       textDirection === 'rtl' ? (

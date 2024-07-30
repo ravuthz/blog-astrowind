@@ -22,8 +22,8 @@ export const GET = async () => {
     items: posts.map((post) => ({
       link: getPermalink(post.permalink, 'post'),
       title: post.title,
+      pubDate: post.publishDate,
       description: post.excerpt,
-      publishDate: post.publishDate,
     })),
 
     trailingSlash: SITE.trailingSlash,
