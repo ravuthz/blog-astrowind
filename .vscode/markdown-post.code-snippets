@@ -1,0 +1,21 @@
+{
+  "Create Markdown Post": {
+    "prefix": "mdpost",
+    "body": [
+      "---",
+      "title: ${1:Post Title}",
+      "image: ${2:Image URL}",
+      "excerpt: ${3:Excerpt of the post}",
+      "category: ${4:Category}",
+      "publishDate: ${5:YYYY-MM-DD}",
+      "tags:",
+      "  - ${6:Tag1}",
+      "  - ${7:Tag2}",
+      "  - ${8:Tag3}",
+      "---",
+      "",
+      "Write your content here...",
+    ],
+    "description": "Creates a Markdown post template with title, image, excerpt, category, publish date, and tags.",
+  },
+}

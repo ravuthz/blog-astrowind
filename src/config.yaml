@@ -1,6 +1,6 @@
 site:
   name: Ravuthz
-  site: 'https://ravuthz.vercel.app'
+  site: 'https://blog-astrowind.vercel.app'
   base: '/'
   trailingSlash: false
 
@@ -11,7 +11,7 @@ metadata:
   title:
     default: Ravuthz
     template: '%s — Ravuthz'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: 'Blog with Astrowind'
   robots:
     index: true
     follow: true
