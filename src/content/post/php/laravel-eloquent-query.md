@@ -1,6 +1,6 @@
 ---
 title: Laravel Eloquent Query
-image: '~/assets/images/laravel-eloquent.svg'
+image: '~/assets/images/laravel-eloquent-query.svg'
 excerpt: Laravel Eloquent functions to query data from database
 category: laravel
 publishDate: 2024-07-31T09:45:02+07:00
